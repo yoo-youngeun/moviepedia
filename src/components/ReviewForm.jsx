@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 
-function EditReviewForm({review, onSubmit}) {
+function ReviewForm({review = {
+    title: '',
+    imgUrl: '',
+    rating: 1,
+    content: ''
+}, onSubmit}) {
     const inputRef = useRef(null);
     useEffect(()=>{
         if (inputRef.current){
@@ -36,4 +41,4 @@ function EditReviewForm({review, onSubmit}) {
     )
 }
 
-export default EditReviewForm;
+export default ReviewForm;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './ReviewListItem.module.css';
 import Modal from './Modal';
-import EditReviewForm from './EditReviewForm';
+import ReviewForm from './ReviewForm';
 function ReviewListItem({item, onUpdate, onDelete}) {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const dateString = (new Date(item.createdAt)).toLocaleDateString(); // 유닉스 타임스탬프 형식 > 날짜형식 변환
@@ -22,7 +22,7 @@ function ReviewListItem({item, onUpdate, onDelete}) {
                 <Modal 
                     isOpen={isEditModalOpen} 
                     onClose={() => setIsEditModalOpen(false)}>
-                    <EditReviewForm 
+                    <ReviewForm 
                         review={item} 
                         onSubmit={handleEditFormSubmit} />
                 </Modal>
