@@ -1,0 +1,32 @@
+import { useEffect, useRef } from "react";
+
+function CreateReviewForm({onSubmit}) {
+    const inputRef = useRef(null);
+    useEffect(()=>{
+        if (inputRef.current){
+            inputRef.current.focus();
+        }
+    }, [])
+
+    const submit = (formData) => {
+        const data = Object.fromEntries(formData.entries()); // javascript 객체로 변환
+        onSubmit(data);
+    }
+
+    return (
+        <form action={submit}>
+            <input name="title" placeholder="제목을 입력하세요" ref={inputRef} />
+            <select name="rating">
+                <option value={1}>⭐️</option>
+                <option value={2}>⭐️⭐️</option>
+                <option value={3}>⭐️⭐️⭐️</option>
+                <option value={4}>⭐️⭐️⭐️⭐️</option>
+                <option value={5}>⭐️⭐️⭐️⭐️⭐️</option>
+            </select>
+            <textarea name="content" placeholder="내용을 입력하세요."></textarea>
+            <button>작성완료</button>
+        </form>
+    )
+}
+
+export default CreateReviewForm;
